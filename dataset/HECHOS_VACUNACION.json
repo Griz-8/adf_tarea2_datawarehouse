@@ -1,0 +1,54 @@
+{
+	"name": "HECHOS_VACUNACION",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSqlDatabase_PAI",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "silver"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id_hecho",
+				"type": "varchar"
+			},
+			{
+				"name": "paciente_id",
+				"type": "varchar"
+			},
+			{
+				"name": "vacuna_id",
+				"type": "varchar"
+			},
+			{
+				"name": "establecimiento_id",
+				"type": "varchar"
+			},
+			{
+				"name": "fecha_id",
+				"type": "date"
+			},
+			{
+				"name": "numero_dosis",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "lote",
+				"type": "varchar"
+			},
+			{
+				"name": "edad_dias",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "HECHOS_VACUNACION"
+		}
+	}
+}

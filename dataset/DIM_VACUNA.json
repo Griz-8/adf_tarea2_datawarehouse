@@ -1,0 +1,40 @@
+{
+	"name": "DIM_VACUNA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSqlDatabase_PAI",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "silver"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "vacuna_id",
+				"type": "varchar"
+			},
+			{
+				"name": "vacuna_nombre",
+				"type": "varchar"
+			},
+			{
+				"name": "enfermedad_previene",
+				"type": "varchar"
+			},
+			{
+				"name": "grupo_pai",
+				"type": "varchar"
+			},
+			{
+				"name": "via_administracion",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DIM_VACUNA"
+		}
+	}
+}
