@@ -17,7 +17,11 @@
 			],
 			"sinks": [
 				{
-					"name": "sink1"
+					"dataset": {
+						"referenceName": "DIM_ESTABLECIMIENTO",
+						"type": "DatasetReference"
+					},
+					"name": "SilverDimEstablecimiento"
 				}
 			],
 			"transformations": [],
@@ -42,8 +46,23 @@
 				"     ignoreNoFilesFound: false) ~> BronzeEstablecimientos",
 				"BronzeEstablecimientos sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          establecimiento_id as string,",
+				"          nombre_establecimiento as string,",
+				"          tipo_establecimiento as string,",
+				"          nivel_atencion as integer,",
+				"          departamento as string,",
+				"          municipio as string,",
+				"          red_salud as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> SilverDimEstablecimiento"
 			]
 		}
 	}
