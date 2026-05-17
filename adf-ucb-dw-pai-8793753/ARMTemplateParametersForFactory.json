@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-ucb-dw-pai-8793753"
+		},
+		"LS_AzureDataLake_PAI_accountKey": {
+			"value": ""
+		},
+		"LS_AzureSqlDatabase_PAI_password": {
+			"value": ""
+		},
+		"LS_AzureDataLake_PAI_properties_typeProperties_url": {
+			"value": "https://saucbpai8793753.dfs.core.windows.net/"
+		},
+		"LS_AzureSqlDatabase_PAI_properties_typeProperties_server": {
+			"value": "sql-ucb-sisger-pai-8793753.database.windows.net"
+		},
+		"LS_AzureSqlDatabase_PAI_properties_typeProperties_database": {
+			"value": "dw_pai_bolivia"
+		},
+		"LS_AzureSqlDatabase_PAI_properties_typeProperties_userName": {
+			"value": "michelle"
+		}
+	}
+}
