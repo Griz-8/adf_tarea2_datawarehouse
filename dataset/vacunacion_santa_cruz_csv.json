@@ -16,7 +16,7 @@
 				"fileName": "vacunacion_santa_cruz.csv",
 				"fileSystem": "bronze"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": ";",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
