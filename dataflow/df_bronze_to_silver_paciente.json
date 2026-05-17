@@ -87,7 +87,7 @@
 				"          apellido_paterno as string,",
 				"          apellido_materno as string,",
 				"          sexo as string,",
-				"          fecha_nacimiento as date,",
+				"          fecha_nacimiento as string,",
 				"          municipio_residencia as string,",
 				"          comunidad_indigena as string,",
 				"          fecha_vacunacion as string,",
