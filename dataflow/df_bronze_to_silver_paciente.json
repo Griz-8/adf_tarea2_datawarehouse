@@ -50,6 +50,15 @@
 				},
 				{
 					"name": "select4"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "derivedColumn2"
+				},
+				{
+					"name": "derivedColumn3"
 				}
 			],
 			"scriptLines": [
@@ -61,7 +70,7 @@
 				"          primer_apellido as string,",
 				"          segundo_apellido as string,",
 				"          genero as string,",
-				"          fec_nacimiento as date,",
+				"          fec_nacimiento as string,",
 				"          municipio as string,",
 				"          pueblo_indigena as string,",
 				"          fec_vacunacion as string,",
@@ -116,7 +125,7 @@
 				"          patient_last_name_1 as string,",
 				"          patient_last_name_2 as string,",
 				"          patient_sex as string,",
-				"          patient_birth_date as date,",
+				"          patient_birth_date as string,",
 				"          patient_department as string,",
 				"          patient_municipality as string,",
 				"          patient_community as string,",
@@ -140,7 +149,7 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source3",
 				"select4, select3, select2 union(byName: true)~> union1",
-				"source3 select(mapColumn(",
+				"derivedColumn2 select(mapColumn(",
 				"          id_registro = record_id,",
 				"          sync_timestamp,",
 				"          device_id,",
@@ -169,7 +178,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
-				"source2 select(mapColumn(",
+				"derivedColumn1 select(mapColumn(",
 				"          id_registro = registro_id,",
 				"          paciente_id,",
 				"          ci = ci_paciente,",
@@ -194,7 +203,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
-				"source1 select(mapColumn(",
+				"derivedColumn3 select(mapColumn(",
 				"          id_registro,",
 				"          paciente_id = cod_paciente,",
 				"          ci = documento_identidad,",
@@ -215,6 +224,9 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select4",
+				"source2 derive(fecha_nacimiento = toDate(fecha_nacimiento, 'dd/MM/yyyy')) ~> derivedColumn1",
+				"source3 derive(patient_birth_date = toDate(patient_birth_date, 'yyyy-MM-dd')) ~> derivedColumn2",
+				"source1 derive(fec_nacimiento = coalesce(     toDate(fec_nacimiento, 'dd/MM/yyyy'),     toDate(fec_nacimiento, 'yyyy-MM-dd') )) ~> derivedColumn3",
 				"union1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
