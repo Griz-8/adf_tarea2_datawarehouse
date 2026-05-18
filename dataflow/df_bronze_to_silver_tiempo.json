@@ -282,15 +282,8 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          paciente_id,",
-				"          ci,",
-				"          nombres,",
-				"          apellido_paterno,",
-				"          apellido_materno,",
-				"          genero,",
-				"          fecha_nacimiento,",
-				"          municipio,",
-				"          indigena",
+				"          anio,",
+				"          trimestre",
 				"     )) ~> sink1"
 			]
 		}
