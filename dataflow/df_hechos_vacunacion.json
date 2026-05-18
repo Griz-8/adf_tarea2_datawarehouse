@@ -57,7 +57,15 @@
 					"name": "srcTiempo"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "HECHOS_VACUNACION",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "union1"
@@ -329,7 +337,27 @@
 				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> joinTiempo"
+				"     broadcast: 'auto')~> joinTiempo",
+				"joinTiempo sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          id_hecho as string,",
+				"          paciente_id as string,",
+				"          vacuna_id as string,",
+				"          establecimiento_id as string,",
+				"          fecha_id as date,",
+				"          numero_dosis as double,",
+				"          lote as string,",
+				"          edad_dias as double",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 			]
 		}
 	}
